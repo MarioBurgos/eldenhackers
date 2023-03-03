@@ -2,6 +2,7 @@ package com.eldenhackers.utilities;
 
 public class Emoji {
 
+    public final static String CROSSED_SWORDS = "⚔️️";
     public final static String DAGGER = "\uD83D\uDDE1️";
     public final static String PUNCH = "\uD83D\uDC4A️";
     public final static String WARRIOR_CONCENTRATION = "\uD83D\uDCA2️";
