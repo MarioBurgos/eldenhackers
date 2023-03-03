@@ -51,13 +51,12 @@ public class Menu {
         Thread.sleep(800);
         System.out.println();
         Thread.sleep(800);
-        System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t       "+ Emoji.CROSSED_SWORDS +" FIGHT! " + Emoji.CROSSED_SWORDS);
+        System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t      "+ Emoji.CROSSED_SWORDS +" FIGHT! " + Emoji.CROSSED_SWORDS);
         Thread.sleep(800);
     }
 
     public static void winnerMessage(Character character){
-        System.out.println("\n\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tCongratz "+ AnsiColors.YELLOW + character.getName() + AnsiColors.RESET + " is the best " + character.getCharacterType() +" on the world!");
-        System.out.println("\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t    YOU WIN!!\n\n");
+        System.out.println("\n\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tCongratulations "+ AnsiColors.YELLOW + character.getName() + AnsiColors.RESET + ".  YOU WON!!");
     }
 
     public static void credits() {
