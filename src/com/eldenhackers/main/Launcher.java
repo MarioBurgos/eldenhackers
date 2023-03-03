@@ -4,6 +4,8 @@ import com.eldenhackers.game.Game;
 import com.eldenhackers.menus.Menu;
 import com.eldenhackers.utilities.CustomScanner;
 
+import java.util.Scanner;
+
 public class Launcher {
     public static void main(String[] args) {
 
@@ -32,7 +34,7 @@ public class Launcher {
                 case 3:
                     Menu.credits();
                     System.out.println("\nPress 'Enter' to go back to Main menu");
-                    customScanner.scanString();
+                    Scanner scanner = new Scanner(System.in);
                     break;
                 default:
             }
