@@ -42,19 +42,24 @@ public class Warrior extends Character {
         }
         return attackedCharacter;
     }
-
-    private void setRandomStats() {
-        super.setHp(RandomGenerator.getDefault().nextInt(100, 200));
-        stamina = RandomGenerator.getDefault().nextInt(10, 50);
-        strength = RandomGenerator.getDefault().nextInt(1, 10);
-    }
-
-    public String printStats(){
+    @Override
+    public String getStats(){
         String stats = AnsiColors.PURPLE + getName() + " (Warrior) || Stamina: " + getStamina() + " || Strength: " + getStrength() + " || Hp: " + getHp() + AnsiColors.RESET;
         if (!isAlive()) {
             stats += " " + Emoji.SKULL;
         }
         return stats;
+    }
+
+    @Override
+    public String getCharacterType(){
+        return AnsiColors.PURPLE + "WARRIOR" + AnsiColors.RESET;
+    }
+
+    private void setRandomStats() {
+        super.setHp(RandomGenerator.getDefault().nextInt(100, 200));
+        stamina = RandomGenerator.getDefault().nextInt(10, 50);
+        strength = RandomGenerator.getDefault().nextInt(1, 10);
     }
 
     public Integer getStamina() {

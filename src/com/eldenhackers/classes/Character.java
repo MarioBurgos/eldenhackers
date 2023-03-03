@@ -22,6 +22,8 @@ public abstract class Character implements Attacker {
     }
 
     public abstract Character attack(Character character);
+    public abstract String getStats();
+    public abstract String getCharacterType();
 
     public void checkAlive(){
         isAlive = hp <= 0 ? false : true;

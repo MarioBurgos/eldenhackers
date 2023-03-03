@@ -5,7 +5,7 @@ import com.eldenhackers.utilities.Emoji;
 
 import java.util.random.RandomGenerator;
 
-public class Wizard extends Character{
+public class Wizard extends Character {
 
     private Integer mana;
     private Integer intelligence;
@@ -44,14 +44,20 @@ public class Wizard extends Character{
         return attackedCharacter;
     }
 
+    @Override
+    public String getCharacterType(){
+        return AnsiColors.PURPLE + "WARRIOR" + AnsiColors.RESET;
+    }
+
     private void setRandomStats() {
         super.setHp(RandomGenerator.getDefault().nextInt(50, 100));
         mana = RandomGenerator.getDefault().nextInt(10, 50);
         intelligence = RandomGenerator.getDefault().nextInt(1, 50);
     }
 
-    public String printStats(){
-        String stats = AnsiColors.CYAN + getName() + " (Wizard) || Stamina: " + getMana() + " || Strength: " + getIntelligence()+ " || Hp: " + getHp() + AnsiColors.RESET;
+    @Override
+    public String getStats() {
+        String stats = AnsiColors.CYAN + getName() + " (Wizard) || Stamina: " + getMana() + " || Strength: " + getIntelligence() + " || Hp: " + getHp() + AnsiColors.RESET;
         if (!isAlive()) {
             stats += " " + Emoji.SKULL;
         }
