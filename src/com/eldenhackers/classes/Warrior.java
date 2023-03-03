@@ -1,9 +1,8 @@
 package com.eldenhackers.classes;
 
 import com.eldenhackers.utilities.AnsiColors;
+import com.eldenhackers.utilities.CustomRandomGenerator;
 import com.eldenhackers.utilities.Emoji;
-
-import java.util.random.RandomGenerator;
 
 public class Warrior extends Character {
     private Integer stamina;
@@ -32,19 +31,22 @@ public class Warrior extends Character {
         Character attackedCharacter = character;
         if (stamina >= 5) {
             attackedCharacter.setHp(character.getHp() - strength);
-            System.out.println(getName() + " performed a heavy attack and lost -5 stamina. " + Emoji.DAGGER);
+            stamina -= 5;
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.PURPLE + getName() + AnsiColors.RESET + " performed a heavy attack and lost -5 stamina. " + Emoji.DAGGER);
         } else if (stamina > 0) {
             attackedCharacter.setHp(character.getHp() - strength / 2);
-            System.out.println(getName() + " performed a weak attack and recovered +1 stamina. " + Emoji.PUNCH);
+            stamina++;
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.PURPLE + getName() + AnsiColors.RESET + " performed a weak attack and recovered +1 stamina. " + Emoji.PUNCH);
         } else {
             stamina += 2;
-            System.out.println(getName() + " is preparing the next attack and recovered +2 stamina. " + Emoji.WARRIOR_CONCENTRATION);
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.PURPLE + getName() + AnsiColors.RESET + " is preparing the next attack and recovered +2 stamina. " + Emoji.WARRIOR_CONCENTRATION);
         }
         return attackedCharacter;
     }
+
     @Override
-    public String getStats(){
-        String stats = AnsiColors.PURPLE + getName() + " (Warrior) || Stamina: " + getStamina() + " || Strength: " + getStrength() + " || Hp: " + getHp() + AnsiColors.RESET;
+    public String getStats() {
+        String stats = AnsiColors.RESET + AnsiColors.PURPLE + getName() + AnsiColors.RESET + " || Stamina: " + AnsiColors.PURPLE + getStamina() + AnsiColors.RESET + " || Strength: " + AnsiColors.PURPLE + getStrength() + AnsiColors.RESET + " || Hp: " + AnsiColors.PURPLE + getHp() + AnsiColors.RESET;
         if (!isAlive()) {
             stats += " " + Emoji.SKULL;
         }
@@ -52,14 +54,14 @@ public class Warrior extends Character {
     }
 
     @Override
-    public String getCharacterType(){
-        return AnsiColors.PURPLE + "WARRIOR" + AnsiColors.RESET;
+    public String getCharacterType() {
+        return AnsiColors.RESET + AnsiColors.PURPLE + "WARRIOR" + AnsiColors.RESET;
     }
 
     private void setRandomStats() {
-        super.setHp(RandomGenerator.getDefault().nextInt(100, 200));
-        stamina = RandomGenerator.getDefault().nextInt(10, 50);
-        strength = RandomGenerator.getDefault().nextInt(1, 10);
+        super.setHp(CustomRandomGenerator.getRangedInt(100, 200));
+        stamina = CustomRandomGenerator.getRangedInt(10, 50);
+        strength = CustomRandomGenerator.getRangedInt(1, 10);
     }
 
     public Integer getStamina() {

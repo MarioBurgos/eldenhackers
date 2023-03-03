@@ -1,9 +1,8 @@
 package com.eldenhackers.classes;
 
 import com.eldenhackers.utilities.AnsiColors;
+import com.eldenhackers.utilities.CustomRandomGenerator;
 import com.eldenhackers.utilities.Emoji;
-
-import java.util.random.RandomGenerator;
 
 public class Wizard extends Character {
 
@@ -33,31 +32,33 @@ public class Wizard extends Character {
         Character attackedCharacter = character;
         if (mana >= 5) {
             attackedCharacter.setHp(character.getHp() - intelligence);
-            System.out.println(getName() + " casted a fireball and lost -5 stamina. " + Emoji.FIREBALL);
+            mana -= 5;
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.BLUE + getName() + AnsiColors.RESET + " casted a fireball and lost -5 stamina. " + Emoji.FIREBALL);
         } else if (mana > 0) {
             attackedCharacter.setHp(character.getHp() - intelligence / 2);
-            System.out.println(getName() + " hit with the staff and recovered +1 stamina. " + Emoji.STAFF);
+            mana++;
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.BLUE + getName() + AnsiColors.RESET + " hit with the staff and recovered +1 stamina. " + Emoji.STAFF);
         } else {
             mana += 2;
-            System.out.println(getName() + " is preparing the next attack and recovered +2 stamina. " + Emoji.WIZARD_CONCENTRATION);
+            System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t"+AnsiColors.BLUE + getName() + AnsiColors.RESET + " is preparing the next attack and recovered +2 stamina. " + Emoji.WIZARD_CONCENTRATION);
         }
         return attackedCharacter;
     }
 
     @Override
-    public String getCharacterType(){
-        return AnsiColors.PURPLE + "WARRIOR" + AnsiColors.RESET;
+    public String getCharacterType() {
+        return AnsiColors.RESET + AnsiColors.BLUE + "WIZARD" + AnsiColors.RESET;
     }
 
     private void setRandomStats() {
-        super.setHp(RandomGenerator.getDefault().nextInt(50, 100));
-        mana = RandomGenerator.getDefault().nextInt(10, 50);
-        intelligence = RandomGenerator.getDefault().nextInt(1, 50);
+        super.setHp(CustomRandomGenerator.getRangedInt(50, 100));
+        mana = CustomRandomGenerator.getRangedInt(10, 50);
+        intelligence = CustomRandomGenerator.getRangedInt(1, 50);
     }
 
     @Override
     public String getStats() {
-        String stats = AnsiColors.CYAN + getName() + " (Wizard) || Stamina: " + getMana() + " || Strength: " + getIntelligence() + " || Hp: " + getHp() + AnsiColors.RESET;
+        String stats = AnsiColors.RESET + AnsiColors.BLUE + getName() + AnsiColors.RESET + " || Mana: " + AnsiColors.BLUE + getMana() + AnsiColors.RESET + " || Intelligence: " + AnsiColors.BLUE + getIntelligence() + AnsiColors.RESET + " || Hp: " + AnsiColors.BLUE + getHp() + AnsiColors.RESET;
         if (!isAlive()) {
             stats += " " + Emoji.SKULL;
         }
